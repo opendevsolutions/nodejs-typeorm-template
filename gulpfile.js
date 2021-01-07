@@ -40,7 +40,7 @@ gulp.task('start', async () => {
 		script: config.server.src,
 		ext: 'js',
 		env: {
-			'NODE_ENV': 'development',
+			'NODE_ENV': 'variables de entorno para el arranque solo en local',
 			'DB_TYPE': 'oracle',
 			'DB_HOST': "10.3.5.134",
 			'DB_PORT': '1521',

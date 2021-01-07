@@ -7,8 +7,8 @@ class Enrutador {
     }
     iniciar(express) {
         this.rutas = express.Router();
-        this.rutas.route("/exampleClass")
-            .get(this.controller.getExample);
+        this.rutas.route("/example").get(this.controller.getSimpleExample);
+        this.rutas.route("/exampleClass").get(this.controller.getExampleFromService);
     }
     obtenerRutas() {
         return this.rutas;

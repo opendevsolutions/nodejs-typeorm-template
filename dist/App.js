@@ -34,7 +34,7 @@ class App {
     configurarApi() {
         this.enrutador.iniciar(express);
         this.health.iniciar(express);
-        this.express.use('/legacy-asociados', this.enrutador.obtenerRutas());
+        this.express.use('/asociados', this.enrutador.obtenerRutas());
         this.express.use('/health', this.health.obtenerRutas());
         //Configurar documento swagger antes de descomentar
         this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

@@ -12,7 +12,7 @@ export class Repository {
                 return Repository.connection;
             } else {
 
-                /* */
+                /* Estas son variables de entorno para Typeorm*/
                 let options:any = {
                     type: process.env.DB_TYPE,
                     host: process.env.DB_HOST,

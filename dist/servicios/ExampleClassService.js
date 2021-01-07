@@ -18,11 +18,25 @@ class ExampleClassService {
             const autorizacionRepository = yield connection.getRepository(ExampleClass_1.ExampleClass);
             return autorizacionRepository;
         });
+        /* Si hay una clase relaciona con OneToOne etc, se puede agregar el segundo parametro relations y poner el nombre de su atributo */
         this.getExampleClassById = (params) => __awaiter(this, void 0, void 0, function* () {
-            /* Primero traemos la AutorizacionPractica para obtener su ID mediante los parametros Tipo, Subtipo, Activo */
             const exampleClassRepository = yield this.getExampleClassRepository();
-            const object = yield exampleClassRepository.findOne(params.id);
+            const object = yield exampleClassRepository.findOne(params.id, { relations: ['nombreAtributoClaseRelacionada si existe'] });
             return object;
+        });
+        this.getExampleClassByIds = (params) => __awaiter(this, void 0, void 0, function* () {
+            /* Encuentra por array de Ids */
+            const exampleClassRepository = yield this.getExampleClassRepository();
+            const objects = yield exampleClassRepository.findByIds(params.arrayIds, { relations: ['nombreAtributoClaseRelacionada si existe'] });
+            return objects;
+        });
+        this.getExampleClassByIdWithQueryBuilder = (params) => __awaiter(this, void 0, void 0, function* () {
+            /* Define una busqueda personalizada */
+            const exampleClassRepository = yield this.getExampleClassRepository();
+            const objects = yield exampleClassRepository.createQueryBuilder("item")
+                .where("item.atributo = :atributo", { atributo: params.atributo })
+                .andWhere("item.atributoExtra >= :atributoExtra", { atributoExtra: params.atributoExtra }).getMany();
+            return objects;
         });
     }
 }

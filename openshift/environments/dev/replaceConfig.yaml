@@ -8,4 +8,4 @@ parameters:
   displayName: Application Name
   name: APP_NAME
   required: true
-  value: autorizaciones-api
+  value: project-name

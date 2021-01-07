@@ -13,11 +13,10 @@ export class Enrutador {
 
     public iniciar(express: any) {
         this.rutas = express.Router();
-
-        this.rutas.route("/exampleClass")
-            .get(this.controller.getExample);
-
+        this.rutas.route("/example").get(this.controller.getSimpleExample);
+        this.rutas.route("/exampleClass").get(this.controller.getExampleFromService);
     }
+
 
     public obtenerRutas(){
         return this.rutas;

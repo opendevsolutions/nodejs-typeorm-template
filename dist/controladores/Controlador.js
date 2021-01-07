@@ -12,7 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ExampleClassService_1 = require("../servicios/ExampleClassService");
 class Controlador {
     constructor() {
-        this.getExample = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.getSimpleExample = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            res.send("Hello OpendevPro");
+        });
+        this.getExampleFromService = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const response = yield this.exampleClassService.getExampleClassById(req.query);
                 res.send(response);

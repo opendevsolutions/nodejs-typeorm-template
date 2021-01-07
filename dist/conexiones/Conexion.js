@@ -21,7 +21,7 @@ Repository.getInstace = () => __awaiter(void 0, void 0, void 0, function* () {
             return Repository.connection;
         }
         else {
-            /* */
+            /* Estas son variables de entorno para Typeorm*/
             let options = {
                 type: process.env.DB_TYPE,
                 host: process.env.DB_HOST,
