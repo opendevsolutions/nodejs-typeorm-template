@@ -1,0 +1,631 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Auditoria de terreno, Autorizaciones API REST",
+        "version": "1.0.0",
+        "description": "API Restful de Aplicativo de Autorizaciones de Auditoria de terreno,"
+    },
+    "basePath": "/",
+    "tags": [
+
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/autorizaciones/tipo": {
+            "get": {
+                "tags": [
+                    "Tipos de Autorizaciones"
+                ],
+                "summary": "Obtiene las autorizaciones por tipo",
+                "operationId": "obtenerAutorizacionesTipo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "activo",
+                        "in": "query",
+                        "description": "S o N",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "Retorna una lista de Autorizaciones.",
+                "responses": {
+                    "200": {
+                        "description": "Una lista de autorizaciones",
+                        "schema": {
+                            "$ref": "#/definitions/ListaAutorizacionTipo"
+                        }
+                    },
+                    "400": {
+                        "description": "Params inválidos"
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/autorizaciones/subtipo": {
+            "get": {
+                "tags": [
+                    "Subtipos de autorizaciones"
+                ],
+                "summary": "Obtiene los subtipos de autorizaciones",
+                "operationId": "obtenerAutorizacionesSubtipo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "autorizacion_tipo_id",
+                        "in": "query",
+                        "description": "ID de la Autorizacion Tipo.",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": true
+                    },
+                    {
+                        "name": "activo",
+                        "in": "query",
+                        "description": "S o N",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "Retorna una Lista de Autorizaciones Subtipo.",
+                "responses": {
+                    "200": {
+                        "description": "Lista de Autorizaciones Subtipo",
+                        "schema": {
+                            "$ref": "#/definitions/AutorizacionSubtipo"
+                        }
+                    },
+                    "400": {
+                        "description": "Params inválidos"
+                    },
+                    "404": {
+                        "description": "AutorizacionSubtipo no encontrada"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+
+
+
+        "/autorizaciones/documento": {
+            "get": {
+                "tags": [
+                    "Autorizaciones Documento"
+                ],
+                "summary": "Obtiene las autorizaciones documento segun autorizacionPracticaId",
+                "operationId": "obtenerAutorizacionesDocumento",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "idAutorizacionPractica",
+                        "in": "query",
+                        "description": "AutorizacionPracticaId",
+                        "type": "number",
+                        "required": true
+                    }
+                ],
+                "description": "Retorna una lista de Autorizaciones Documento dependiendo el id autorizacion practica como parametro.",
+                "responses": {
+                    "200": {
+                        "description": "Una lista de Autorizaciones Documento",
+                        "schema": {
+                            "$ref": "#/definitions/ListaAutorizacionDocumento"
+                        }
+                    },
+                    "400": {
+                        "description": "Params inválidos"
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+
+
+
+
+
+        "/autorizaciones/practica": {
+            "get": {
+                "tags": [
+                    "Practica Autorizaciones"
+                ],
+                "summary": "Obtiene las Autorizaciones Practicas",
+                "operationId": "obtenerAutorizacionesPractica",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "autorizacion_tipo_id",
+                        "in": "query",
+                        "description": "ID de la Autorizacion Tipo.",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": true
+                    },
+                    {
+                        "name": "activo",
+                        "in": "query",
+                        "description": "S o N",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "autorizacion_subtipo_id",
+                        "in": "query",
+                        "description": "ID de la Autorizacion Tipo.",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": true
+                    },
+                    {
+                        "name": "id_plan",
+                        "in": "query",
+                        "description": "ID de la Autorizacion Tipo.",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": true
+                    }
+                ],
+                "description": "Retorna un objeto Autorizacion Practica.",
+                "responses": {
+                    "200": {
+                        "description": "objeto Autorizacion Practica",
+                        "schema": {
+                            "$ref": "#/definitions/AutorizacionPractica"
+                        }
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/autorizaciones/numerador": {
+            "post": {
+                "tags": [
+                    "Numerador Omnicanal"
+                ],
+                "summary": "Obtiene Un Valor Identificatorio",
+                "operationId": "obtenerNumeradorOmnicanal",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "body",
+                        "description": "Objeto numeradorOmnicanal.",
+                        "schema": {
+                            "example": {
+                                "canal": "web",
+                                "tipo": "autorizacion",
+                                "fechaEmision" : "2020-10-10"
+                            }
+                        },
+                        "required": true
+                    }
+                ],
+                "description": "Retorna un objeto Numerador Omnicanal.",
+                "responses": {
+                    "200": {
+                        "description": "objeto Numerador Omnicanal",
+                        "schema": {
+                            "$ref": "#/definitions/NumeradorOmnicanal"
+                        }
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/autorizaciones/archivo": {
+            "post": {
+                "tags": [
+                    "Upload Archivo"
+                ],
+                "summary": "Persiste un archivo en base de datos",
+                "operationId": "obtenerObjetoUploadArchivo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "file upload",
+                        "type": "file",
+                        "required": true
+                    },
+                    {
+                        "name": "numerador_omnicanal_id",
+                        "in": "formData",
+                        "description": "numerador_omnicanal_id",
+                        "type": "integer",
+                        "schema": {
+                            "example": "2"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "autorizacion_documento_id",
+                        "in": "formData",
+                        "description": "autorizacion_documento_id",
+                        "type": "integer",
+                        "schema": {
+                            "example": "2"
+                        },
+                        "required": true
+                    }
+                ],
+                "description": "Retorna un objeto Upload File.",
+                "responses": {
+                    "200": {
+                        "description": "objeto Upload File",
+                        "schema": {
+                            "$ref": "#/definitions/UploadArchivo"
+                        }
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/autorizaciones/preincidente": {
+            "post": {
+                "tags": [
+                    "Genera un identificador engage"
+                ],
+                "summary": "Modifica la tabla NUMERADOR_OMNICANAL persistiendo las columnas NUMERO_EXTERNO_REL y FECHA_HORA_EXTERNO, siempre y cuando su valor sea NULL en las dos",
+                "operationId": "obtenerObjetoGeneraPreincidente",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "body",
+                        "description": "Objeto Genera Preincidente.",
+                        "schema": {
+                            "example": {
+                                "numeradorOmnicanalId": 41,
+                                "idAsociado": 6719410,
+                                "autorizacionTipoId" : 91,
+                                "autorizacionSubtipoId": 123,
+                                "autorizacionPracticaId" : 2,
+                                "arrayArchivoId" : [ 6,359 ],
+                                "idAsociadoSolicitante":6719410,
+                                "arrayAtributoConfigurable":
+                                [
+                                    {"id":21,"valor":"Manuel Perez"},
+                                    {"id":2,"valor":"datos"},
+                                    {"id":3,"valor":"20/12/2020"}
+                                ]  
+                            }
+                        },
+                        "required": true
+                    }
+                ],
+                "description": "Retorna un objeto Genera Preincidente.",
+                "responses": {
+                    "200": {
+                        "description": "objeto Genera Preincidente ok",
+                        "schema": {
+                            "$ref": "#/definitions/GeneraPreincidente"
+                        }
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        },
+        "/autorizaciones/atributoConfigurable": {
+            "get": {
+                "tags": [
+                    "Autorizacion Atributo Configurable"
+                ],
+                "summary": "Obtiene los Atributo Configurable",
+                "operationId": "obtenerAutorizacionAtributoConfigurable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "autorizacion_tipo_id",
+                        "in": "query",
+                        "description": "ID de la Autorizacion Tipo.",
+                        "type": "integer",
+                        "format": "int64",
+                        "required": true,
+                        "schema": {
+                            "example": "91"
+                        }
+                    },
+                    {
+                        "name": "activo",
+                        "in": "query",
+                        "description": "S o N",
+                        "type": "string",
+                        "required": true,
+                        "schema": {
+                            "example": "S"
+                        }
+                    }
+                ],
+                "description": "Retorna un objeto Autorizacion Atributo Configurable.",
+                "responses": {
+                    "200": {
+                        "description": "objeto Autorizacion Practica",
+                        "schema": {
+                            "$ref": "#/definitions/AutorizacionAtributoConfigurable"
+                        }
+                    },
+                    "405": {
+                        "description": "Error de validación"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AutorizacionSubtipo": {
+                "type": "object",
+                "properties": {
+                    "autorizacion_subtipo_id": {
+                        "type": "integer"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "mensaje_aviso": {
+                        "type": "string"
+                    }
+                }
+        },
+        "AutorizacionPractica": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "descripcion": {
+                    "type": "string"
+                },
+                "plazo": {
+                    "type": "string"
+                },
+                "plazoHs": {
+                    "type": "integer"
+                },
+                "activo": {
+                    "type": "string"
+                },
+                "requiere": {
+                    "type": "string"
+                }
+            }
+        },
+        "AutorizacionTipo": {
+            "type": "object",
+            "properties": {
+                "autorizacion_tipo_id": {
+                    "type": "integer"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "descripcion": {
+                    "type": "string"
+                }
+            }
+        },
+        "NumeradorOmnicanal": {
+            "type": "object",
+            "properties": {
+                "codigo_error": {
+                    "type": "string"
+                },
+                "descripcion_error": {
+                    "type": "string"
+                },
+                "numeradorOmnicanalId": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "AutorizacionDocumento": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "descripcion": {
+                    "type": "string"
+                },
+                "obligatorio": {
+                    "type": "string"
+                }
+            }
+        },
+        "UploadArchivo": {
+            "type": "object",
+            "properties": {
+                "codigo_error": {
+                    "type": "string"
+                },
+                "descripcion_error": {
+                    "type": "string"
+                },
+                "archivo_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ListaAutorizacionTipo": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AutorizacionTipo"
+                    }
+                }
+            }
+        },
+        "ListaAutorizacionSubtipo": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AutorizacionSubtipo"
+                    }
+                }
+            }
+        },
+        "ListaAutorizacionDocumento": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AutorizacionDocumento"
+                    }
+                }
+            }
+        },
+        "UploadFile": {
+            "type": "object",
+            "properties": {
+                "file": {
+                    "type": "file"
+                },
+                "numerador_omnicanal_id": {
+                    "type": "number"
+                },
+                "autorizacion_documento_id": {
+                    "type": "number"
+                }
+            }
+        },
+        "GeneraPreincidente": {
+            "type": "object",
+            "properties": {
+                "codigo_error": {
+                    "type": "string"
+                },
+                "descripcion_error": {
+                    "type": "string"
+                },
+                "numero_seguimiento": {
+                    "type": "integer"
+                },
+                "mensaje_respuesta": {
+                    "type": "string"
+                }
+            }
+        },
+        "AutorizacionAtributoConfigurable": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "identificador": {
+                    "type": "string"
+                },
+                "etiqueta": {
+                    "type": "string"
+                },
+                "tipo": {
+                    "type": "string"
+                },
+                "extension": {
+                    "type": "integer"
+                },
+                "decimal": {
+                    "type": "integer"
+                },
+                "tooltip": {
+                    "type": "string"
+                },
+                "obligatorio": {
+                    "type": "string"
+                },
+                "activo": {
+                    "type": "string"
+                },
+                "valores": {
+                    "type": "array",
+                    "items" : {
+                        "$ref": "#/definitions/Valores"
+                    }
+                }
+            }
+        },
+        "Valores": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "valor": {
+                    "type": "string"
+                },
+                "activo": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

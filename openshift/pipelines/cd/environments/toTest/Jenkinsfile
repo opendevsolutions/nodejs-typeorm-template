@@ -1,0 +1,6 @@
+runCDtoTestPipeline(application: env.APP_NAME,
+              agent: "nodejs10",
+              compileCommands: "npm install; npm run build",
+              testCommands: "sleep 5",
+              artifactsDir: "./",
+              pivotProject: "auditoriaterreno-cd-pipelines")

@@ -1,0 +1,4 @@
+runCDtoProdPipeline(application: env.APP_NAME,
+              agent: "nodejs10",
+              artifactsDir: "./",
+              pivotProject: "auditoriaterreno-cd-pipelines")

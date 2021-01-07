@@ -1,0 +1,74 @@
+{
+  "name": "legacy-asociados-api",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "author": {
+    "name": "Axel Berlot, Diego Guzman",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "tags": [
+    "orm",
+    "typescript",
+    "node",
+    "express"
+  ],
+  "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/chai": "^4.2.9",
+    "@types/expect": "^24.3.0",
+    "@types/express": "^4.11.1",
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^9.6.5",
+    "axios-mock-adapter": "^1.19.0",
+    "chai": "^4.2.0",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-terser": "^1.2.0",
+    "gulp-typescript": "^5.0.1",
+    "mocha": "^7.0.1",
+    "nock": "^13.0.5",
+    "nyc": "^15.0.0",
+    "request": "^2.88.2",
+    "sonarqube-scanner": "^2.5.0",
+    "ts-mocha": "^6.0.0",
+    "typescript": "~3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.3",
+    "express-fileupload": "^1.2.0",
+    "form-data": "^3.0.0",
+    "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^2.3.9",
+    "moment": "^2.29.1",
+    "mysql": "^2.15.0",
+    "oracledb": "^4.0.1",
+    "sinon": "^9.2.1",
+    "swagger-ui-express": "^4.1.2",
+    "typeorm": "^0.2.0"
+  },
+  "scripts": {
+    "start": "node dist/server.js",
+    "build": "node node_modules/gulp/bin/gulp.js prod",
+    "startdev": "node node_modules/gulp/bin/gulp.js start-dev",
+    "coverage": "node_modules/.bin/nyc --reporter lcov node_modules/ts-mocha/bin/ts-mocha spec/app.spec.ts",
+    "analizer": "node node_modules/sonarqube-scanner/dist/bin/sonar-scanner",
+    "test": "node node_modules/ts-mocha/bin/ts-mocha spec/app.spec.ts"
+  }
+}

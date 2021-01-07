@@ -1,0 +1,4 @@
+runCIPipeline(application: env.APP_NAME,
+              agent: "nodejs10",
+              compileCommands: "npm install; npm run build",
+              artifactsDir: "./")
